@@ -1,0 +1,11 @@
+controllers
+    book.controller.js
+models
+    book.model.js
+
+views
+    book    
+    layouts
+db.js
+
+server.js
