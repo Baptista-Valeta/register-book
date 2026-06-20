@@ -1,11 +1,18 @@
-controllers
-    book.controller.js
-models
-    book.model.js
+|
+|___src
+    |__config
+    |  |_____config.js
+    |  |_____db.js
+    |
+    |__controllers
+    |  |_____book.controller.js
+    | 
+    |__models
+    |  |_____book.model.js
+    |
+    |__routes
+    |  |_____book.route.js
+    |
+    |__server.js
 
-views
-    book    
-    layouts
-db.js
-
-server.js
+|__.env

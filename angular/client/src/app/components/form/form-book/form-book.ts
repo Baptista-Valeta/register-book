@@ -1,33 +1,38 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 import { bookModel } from '../../../models/book.model';
-import { JsonPipe } from '@angular/common';
-import { FormsModule } from "@angular/forms";
+import { __values } from 'tslib';
 
 
 @Component({
   selector: 'app-form-book',
-  imports: [JsonPipe, FormsModule],
+  imports: [ ReactiveFormsModule ],
   templateUrl: './form-book.html',
   styleUrl: './form-book.css',
 })
 export class FormBook {
-  
-  book: bookModel = {
-    id: 1,
-    title: "algoritms",
-    author: "bv",
-    year: 2026
-  };
+  title = new FormControl("Baptista Valeta");
+  nome: string = "Valeta";
 
-  submited = false;
+  form = new FormGroup({
+    title: new FormControl(),
+    author: new FormControl(),
+    year: new FormControl(),
+  });
 
-  onSubmit () {
-    this.submited = true;
-  };
-  
-  constructor(book: FormBook) {
+    
+  updateTitle(): void {
+    alert(this.form.value.author)
+  } 
 
-    return book;
-  };
-  
+  onSubmit() {  
+    console.warn(this.form.value);
+  }
+
 }
+
+
+const form = new FormBook();
+
+console.log(form.title.value)

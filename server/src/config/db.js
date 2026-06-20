@@ -1,28 +1,29 @@
 import Sequelize from "sequelize";
-import { DataTypes } from "sequelize";
 
-import { config } from "./config.js";
-import { books } from "../models/book.model.js";
+import { conf } from "./config.js";
+
+let sequelize = null;
 
 export const connectDB = async () => {
-    try {
-        const sequelize = new Sequelize(
-            config.database,
-            config.username,
-            config.password,
+    if(!sequelize) {
+        sequelize = new Sequelize(
+            conf().database,
+            conf().username,
+            conf().password,
             {
-                dialect: "mysql"
+                dialect: conf().dialect || "mysql"
             }
-        );
+        );    
+        
+        try {
+            sequelize.authenticate();
+            console.log("Database conectado com sucesso", sequelize.config.database);
 
-        books(sequelize, DataTypes);
+            return sequelize;
+        }catch (err) {
+            console.error("Erro ao conectar com o banco:", err.message);
+        };
+    };
 
-        await sequelize.authenticate()           
-        console.log("Database conectado com sucesso");
-
-
-        return sequelize;
-    }catch (err) {
-        console.error({erro: err.message})
-    }
-} 
+    return sequelize;
+};

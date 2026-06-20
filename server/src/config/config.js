@@ -1,6 +1,8 @@
-export const config = {
-    database: "register_book",
-    username: "admin.dev",
-    password: "Admin_dev2k3",
-
+export const conf = () => {
+    return  {
+        database: process.env.DB_NAME,
+        username: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        dialect: process.env.DB_DIALECT
+    }
 };

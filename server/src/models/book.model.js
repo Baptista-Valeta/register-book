@@ -1,4 +1,5 @@
-export const books = (sequelize, DataTypes) => {
+import { DataTypes } from "sequelize";
+export const books = (sequelize) => {
     const book = sequelize.define("books", {
         id: {
             type: DataTypes.INTEGER,
@@ -7,7 +8,6 @@ export const books = (sequelize, DataTypes) => {
         },
         title: {
             type: DataTypes.STRING,
-            require: true,
             allowNull: true,
             validate: {
                 notEmpty: true
@@ -15,7 +15,6 @@ export const books = (sequelize, DataTypes) => {
         },
         author: {
             type: DataTypes.STRING,
-            require: true,
             allowNull: true,
             validate: {
                 notEmpty: true
@@ -23,7 +22,6 @@ export const books = (sequelize, DataTypes) => {
         },
         category: {
             type: DataTypes.STRING,
-            require: false,
             allowNull: false,
             validate: {
                 notEmpty: false

@@ -9,13 +9,25 @@ import { FormBook } from '../form/form-book/form-book';
 })
 export class Books {
   data: string = new Date().toDateString();
+  infoBooks: any[] = [
+    {
+      name: "Algoritmos",
+      ano: 2026
+    },
+    {
+      name: "IA",
+      ano: 2022
+    },
+    {
+      name: "Matemathics",
+      ano: 2020
+    },
+    {
+      name: "Computation",
+      ano: 1998
+    }
 
-  book = FormBook;
-
-  
-  constructor() {
-    
-    console.log(this.book)
-  }
+  ]
+  constructor() {}
 
 };
