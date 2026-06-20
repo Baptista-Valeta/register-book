@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 export const books = (sequelize) => {
-    const book = sequelize.define("books", {
+    const book = sequelize.define("Books", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -27,14 +27,18 @@ export const books = (sequelize) => {
                 notEmpty: false
             }
         },
-        yearPublic: {
+        year: {
             type: DataTypes.INTEGER,
             allowNull: true,
             validate: {
                 notEmpty: true
             }
         }
-    });   
+    },
+    {
+        timestamps: false
+    }
+);   
 
     return book
 }
