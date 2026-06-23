@@ -8,10 +8,9 @@
         <div>
             <app-form-book></app-form-book>
         </div>
-    
+        
         <div id="details" class="p-5 text-center">
             <h2 class="mb-3">Detalhes dos livros</h2>
-            
             <table>
                 <thead class="text-bg-success">
                     <th>Título</th>
@@ -21,39 +20,26 @@
                     <th>Editar</th>
                     <th>Remover</th>
                 </thead>
-                <tbody>
-                    <!-- @for (element of ; track element) {
-                        <tr></tr>
-                    } -->
-                       <tr>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                    </tr>
-                       <tr>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                    </tr>
-                       <tr>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
+            <tbody>
 
+                    @for (books of infoBooks; track $index) {
+                        <tr>
+                            <td> {{ books.title }} </td>
+                            <td> {{ books.author }} </td>
+                            <td> {{ books.category }} </td>
+                            <td> {{ books.year }} </td>
+                            <td>
+                                <button class="text-bg-success border-0 fw-bolder p-2 rounded-2">Editar</button>
+                            </td>
+                            <td>
+                                <button class="text-bg-danger border-0 fw-bolder p-2 rounded-2">Remover</button>
+                            </td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</main>
     
     <footer class="text-bg-dark">
         <p>{{data}}</p>

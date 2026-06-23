@@ -22,10 +22,6 @@ export const books = (sequelize) => {
         },
         category: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: false
-            }
         },
         year: {
             type: DataTypes.INTEGER,

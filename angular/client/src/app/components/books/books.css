@@ -1,7 +1,8 @@
 #details {
+    /* width: 70%; */
     height: 550px;
     background-color: rgb(233, 233, 233);
-    border-radius: 5px;
+    border-radius: 5px;    
 }
 
 #details h2 {
@@ -21,6 +22,7 @@ footer {
 
 table {
     width: 100%;
+        overflow: scroll;
 }
 
 table, th, td {
@@ -29,7 +31,12 @@ table, th, td {
     padding: 7px;
 }
 
+th {
+    font-size: 18px;
+}
+
 tr:nth-child(even) {
     background-color: rgba(37, 78, 37, 0.075);
+    width: 100%;
 }
 

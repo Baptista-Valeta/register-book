@@ -7,16 +7,16 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header text-bg-success">
         <h1 class="modal-title fs-3 fw-bold text-center w-100" id="exampleModalLabel">Informações do livro</h1>
         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
       <div class="modal-body p-5">
         
         <!-- Formulário de livro -->
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="formBooks" (ngSubmit)="onSubmitBooks()">
           <div class="w-100 mb-3">
-              <label for="titulo" class="col-sm-2 col-form-label col-form-label-lg">Título: {{title.value}} </label>
+              <label for="titulo" class="col-sm-2 col-form-label col-form-label-lg">Título</label>
               <div class="col-sm-10 w-100">
                   <input type="text" class="form-control form-control-lg" id="titulo" formControlName="title"  placeholder="Título do livro">
               </div>
@@ -25,12 +25,17 @@
               <label for="autor" class="col-sm-2 col-form-label col-form-label-lg">Autor</label>
               <div class="col-sm-10 w-100">
                   <input type="text" class="form-control form-control-lg" id="autor" formControlName="author" placeholder="Nome do autor do livro">
+                  @if (formBooks.get('author')?.hasError("required") && formBooks.get('author')?.touched) {
+                    <small class="text-danger">Email obrigatório</small>
+                  }@else if (author?.hasError("email") && author?.touched) {
+                    <small class="text-danger">Email inválido</small>
+                  }
               </div>
           </div>
           <div class="col w-200 mb-3">
               <label for="genero" class="col-sm-2 col-form-label col-form-label-lg">Género</label>
               <div class="col-sm-10 w-100">
-                  <input type="text" class="form-control form-control-lg" id="genero" placeholder="Género do livro">
+                  <input type="text" class="form-control form-control-lg" id="genero" formControlName="category" placeholder="Género do livro">
               </div>
           </div>
   
@@ -38,14 +43,17 @@
               <label for="ano" class="col-sm-2 col-form-label col-form-label-lg">Ano</label>
               <div class="col-sm-10 w-100">
                   <input type="number" class="form-control form-control-lg" id="ano" formControlName="year" placeholder="Ano de publicação">
-              </div>
+                  @if (year?.invalid && year?.touched) {
+                    <small class="text-danger border-danger w-50">Ano invalido</small>
+                  }
+                </div>
+          </div>
+          <div class="form-footer d-flex gap-3 mt-5">
+            <button type="button" class="btn btn-secondary p-3 fs-5 fw-bolder w-50" (click)="onResetFormBooks()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success fs-5 w-50 fw-bolder" [disabled]="!formBooks.valid">Adicionar livro</button>
           </div>
         </form>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary fs-5" data-bs-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-success fs-5" [disabled]="!form.valid" (click)="updateTitle()">Adicionar livro</button>
       </div>
     </div>
   </div>

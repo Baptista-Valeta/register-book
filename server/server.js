@@ -1,7 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
-import bodyParser from 'body-parser';
 import express from 'express';
+import bodyParser from 'body-parser';
+import cors from "cors";
 
 import { connectDB } from "./src/config/db.js";
 import { initModels } from "./src/models/index.js";
@@ -13,6 +14,10 @@ const app = express();
 const PORT = process.env.PORT
 
 app.use(bodyParser.json());
+
+app.use(cors({
+    origin: 'http://localhost:4200'
+}));
 
 // esperar conexão com o banco
 const sequelize = await connectDB()
@@ -26,5 +31,5 @@ app.use(serverRoute);
 app.use(bookRoute);
 
 app.listen(PORT, () => {
-    console.log(`Servidor ${process.env.PROJECT_NAME} rodando em http://localhost:${PORT}/`);
+    console.log(`Servidor ${process.env.PROJECT_NAME} rodando em http://localhost:${PORT}/api/`);
 });

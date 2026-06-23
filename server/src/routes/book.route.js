@@ -3,11 +3,11 @@ import { createBooks, deleteBooks, getAllBooks, updateBooks } from "../controlle
 
 const router = Router();
 
-router.route("/books")
+router.route("/api/books")
     .post(createBooks)
     .get(getAllBooks)
 
-router.route("/books/:id")
+router.route("/api/books/:id")
     .put(updateBooks)
     .delete(deleteBooks)
 
