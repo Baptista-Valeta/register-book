@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBook } from '../form/form-book/form-book';
 import { BooksService } from '../../services/books';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-books',
@@ -10,19 +11,16 @@ import { BooksService } from '../../services/books';
 })
 export class Books {
   data: string = new Date().toDateString();
-  infoBooks: any[] = []
+  infoBooks: any;
 
   constructor(public booksServices: BooksService) {}
 
-  ngOnInit(): void {
-    this.booksServices.books$
-      .subscribe(books => {
-        // this.books = books;
-        console.log("De books component",books);
-        this.infoBooks.push(books);
-        console.log("infoBooks:",this.infoBooks)
-      });
-      
+  ngOnInit() {
+    this.booksServices.getBooks().subscribe(datas => {
+      this.infoBooks = datas
+      console.log(this.infoBooks)
+    });
+
   };
 
 };  

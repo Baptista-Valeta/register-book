@@ -1,5 +1,5 @@
-export interface bookModel {
-    id: number,
+export interface BooksModel {
+    id: string,
     title: string,
     author: string,
     category?: string,

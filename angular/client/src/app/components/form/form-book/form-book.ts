@@ -50,7 +50,7 @@ export class FormBook {
   onSubmitBooks() {  
     const books = this.formBooks.value
 
-    this.books_services.booksDetails(books);
+    // this.books_services.booksDetails(books);
   };
 
   onResetFormBooks() {
