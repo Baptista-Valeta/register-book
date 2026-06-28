@@ -2,7 +2,7 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/api/", (req, res) => {
     return res.status(200).json({
         name: process.env.PROJECT_NAME,
         development: {

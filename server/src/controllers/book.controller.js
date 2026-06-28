@@ -24,7 +24,7 @@ export const getAllBooks = async (req, res) => {
 
         if(!get_books) return res.status(404).send("Nenhum livro encontrado!");
 
-        return res.status(200).json({message: "Todos os livros", books: get_books});
+        return res.status(200).json({message: "Lista de livros", books: get_books});
     }catch (err) {}
 
 };
